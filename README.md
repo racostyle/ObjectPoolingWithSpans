@@ -21,9 +21,7 @@ You need to manually import 2 packages since Unity is lagging behind:
 Pretty much Google "download NuGet package" (you need to download them directly not with NuGet in IDE), then find and download both packages. Rename the file endings to .zip and unzip them. You only need 2 .dll files, best would be in the netstandard 2.0. To import it into the Unity editor just drag and drop them into a folder (don't move them after!) and __UNCHECK__ Validate references in the inspector for both.
 ![Screenshot_26](https://github.com/racostyle/Whyunoworkx022/assets/10810250/d6fed1a2-db04-4267-b8ab-f82baddf73ea)
 
-### Project structure
-
-There are 3 projects all encapsulating their own use and working as a team
+### Classes
 
 #### ObjectPool
 
