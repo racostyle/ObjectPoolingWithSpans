@@ -19,6 +19,7 @@ You need to manually import 2 packages since Unity is lagging behind:
 * `System.Runtime.CompilerServices.Unsafe`
 
 Pretty much Google "download NuGet package" (you need to download them directly not with NuGet in IDE), then find and download both packages. Rename the file endings to .zip and unzip them. You only need 2 .dll files, best would be in the netstandard 2.0. To import it into the Unity editor just drag and drop them into a folder (don't move them after!) and __UNCHECK__ Validate references in the inspector for both.
+
 ![285054200-d6fed1a2-db04-4267-b8ab-f82baddf73ea](https://github.com/racostyle/ObjectPoolingWithSpans/assets/10810250/fc2eb746-16d8-4f07-a9df-573c67af4e98)
 
 ### Classes
