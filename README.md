@@ -27,7 +27,7 @@ Pretty much Google "download NuGet package" (you need to download them directly 
 #### ObjectPool
 
 The class was initially made as generic but for simplification, I have included POController for easier access. The object pool remained generic and as such for people with needs and know-how, this is a bonus while the project still remains beginner-friendly for newcomers.
-Core pooling logic. The main job is just, and only just, responsibility for object pooling. Look at it, marvel at technology BUT leave it alone. Otherwise, if your game hangs itself and the compiler yells at you, well then it is on you :)
+Core pooling logic. The main job is just, and only just, responsibility for object pooling. Dont change this, otherwise, if your game hangs itself and the compiler yells at you, well, then it is on you :)
 
 #### POController
 `Pooled Object Controller`
