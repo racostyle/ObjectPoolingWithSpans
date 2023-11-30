@@ -35,6 +35,27 @@ Core pooling logic. The main job is just, and only just, responsibility for obje
 This class should be added as a component to the object you want to include in the pool. As described in PoolSpawnerMono it will create a gameobject for the pool but the pool itself will only be referencing POController. Take it as "object manager". Whatever you need to access in your object, should be here. I have already included Transform and GameObject but you can add whatever you need like Health, Movement, Collider, Rigidbody.... This is what you should already be doing, since constantly using GetComponent is not great anyway
 >WARNING: If you do not know what you are doing this is the only class you should be editing.
 
-#### PoolSPawnerMono
+#### PoolSpawnerMono
 
-This class should be attached to GameObject. You can also implement it another way but it requires Monobehaviour for installation. 
+This class should be attached to GameObject. You can also implement it another way but it requires Monobehaviour for installation. For example, You would attach this to EnemyManager which would also instantiate `ObjectPool`. `ObjectPool` and `PoolSpawnerMono` are working together
+
+## How to use
+
+* Instantiating pool
+```csharp
+ _pool = new ObjectPool<POController>();
+_pool.Init(
+    (GameObject)Resources.Load("Enemy/Enemy"), //this is reference to a gameobject you will be instantiating. YOu dont need to use Resources you can just pass a GameObject
+    GetComponent<PoolSpawnerMono>(), //Will do actual instantiation, described above
+    _enemyContainer, //just an empty object in the sceen to where "Enemies" will be instantiated to
+    30, //Max enemies. This is the pool maximum size
+    10); //Pool increciment, this is for how much the pool will be increased when needed up to maximum
+```
+* How to get object from pool
+`_pool.GetObjectsInPool()[i]`
+
+
+
+
+
+
