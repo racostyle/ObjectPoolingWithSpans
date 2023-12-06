@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ObjectPooling
@@ -14,7 +13,7 @@ namespace ObjectPooling
         private Transform _container;
         private PoolSpawnerMono _objectSpawner;
 
-        internal override void Init(GameObject reference, PoolSpawnerMono objectSpawner, Transform container, int maxSize, int poolIncreciment = 10)
+        internal override void Init(GameObject reference, PoolSpawnerMono objectSpawner, Transform container, int maxSize = 100, int poolIncreciment = 10)
         {
             _reference = reference;
             _poolIncreciment = poolIncreciment;
@@ -37,15 +36,17 @@ namespace ObjectPooling
 
         internal override SSpawnData SpawnOrEnableObject()
         {
+            int index = 0;
             Span<T> span = new Span<T>(_poPool);
-            for (int i = 0; i < _poolSize; i++)
+            while (index < _poolSize)
             {
-                if (!_poPool[i].GameObjectRef.activeSelf)
+                if (!_poPool[index].GameObjectRef.activeSelf)
                 {
-                    var obj = EnableFirstAvailableObject(i, span);
+                    var obj = EnableFirstAvailableObject(index, span);
                     if (obj != null)
                         return new SSpawnData { PooledObject = obj, IsNew = false };
                 }
+                index++;
             }
             int objToActivate = IncreasePoolSize(_container);
             return new SSpawnData { PooledObject = EnableFirstAvailableObject(objToActivate, span), IsNew = true };
